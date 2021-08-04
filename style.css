@@ -1,0 +1,70 @@
+#container {
+    padding:30px;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    transition-duration: 0.2s;
+}
+
+.normal {
+    color:cornflowerblue;
+}
+
+.error {
+    color: palevioletred;
+}
+
+#filename {
+    display:flex;
+    justify-content: center;
+}
+
+#filename input {
+    width: 44px;
+}
+
+#input-area {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+#input-area textarea {
+    width: 800px;
+    height: 300px;
+}
+
+#button-area{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+#button-area input {
+    background-color: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    border-radius: 4px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#button-area input:hover {
+    background-color: white;
+    color: cornflowerblue;
+}
+
+#check-area {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
