@@ -3,7 +3,6 @@ const dataInput = document.querySelector("#input-form textarea")
 const fileName = document.querySelector("#input-form input")
 const h2Title = document.querySelector("#title")
 
-
 function onDownload(event) {
   event.preventDefault()
   let data;
@@ -61,4 +60,11 @@ function processData(data) {
   return JSON.stringify(output)
 }
 
+function getSemester() {
+  const month = new Date().getMonth() + 1
+  if (month >= 7 && month <= 12) return 2
+  else return 1
+}
+
 inputForm.addEventListener("submit", onDownload)
+fileName.value = new Date().getFullYear() + '-' + getSemester()
