@@ -1,13 +1,35 @@
 const inputForm = document.querySelector("#input-form")
 const dataInput = document.querySelector("#input-form textarea")
-const fileName = document.querySelector("#input-form input")
+const fileName = document.querySelector("#filename input")
 const h2Title = document.querySelector("#title")
+const downloadButton = document.querySelector("#button-area input")
+
+let jsonData;
+dataInput.focus()
+
+function handlePaste (e) {
+  var clipboardData, pastedData;
+
+  // Stop data actually being pasted into div
+  e.stopPropagation();
+  e.preventDefault();
+
+  // Get pasted data via clipboard API
+  clipboardData = e.clipboardData || window.clipboardData;
+  pastedData = clipboardData.getData('text/plain');
+  
+  jsonData = pastedData
+  console.log(JSON.parse(pastedData))
+  dataInput.value = "Course data count : " + JSON.parse(pastedData).length + '\n' + "Check console log for more detail."
+
+  downloadButton.focus()
+}
 
 function onDownload(event) {
   event.preventDefault()
   let data;
   try {
-    data = JSON.parse(dataInput.value)
+    data = JSON.parse(jsonData)
   }
   catch {
     h2Title.classList.toggle("normal")
@@ -67,4 +89,5 @@ function getSemester() {
 }
 
 inputForm.addEventListener("submit", onDownload)
+dataInput.addEventListener('paste', handlePaste);
 fileName.value = new Date().getFullYear() + '-' + getSemester()
